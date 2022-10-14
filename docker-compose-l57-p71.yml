@@ -16,7 +16,6 @@ services:
   db:
     image: mysql:5.7
     container_name: lims-mysql
-    restart: always
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ${HOME}/mysql_data:/var/lib/mysql
@@ -28,7 +27,6 @@ services:
       - lims_network
   redis:
     image: redis:7.0-alpine
-    restart: always
     container_name: lims-redis
     ports:
       - 6379:6379
@@ -37,7 +35,6 @@ services:
   nginx:
     image: nginx:alpine
     container_name: lims-nginx
-    restart: unless-stopped
     ports:
       - 80:80
     volumes:
